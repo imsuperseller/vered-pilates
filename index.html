@@ -195,21 +195,28 @@ nav.sc{border-color:var(--ink-faint);}
   content:'';position:absolute;
   width:85%;padding-top:85%;
   border-radius:50%;
-  border:1px solid rgba(237,231,223,0.08);
+  border:1px solid rgba(237,231,223,0.1);
   top:50%;left:50%;transform:translate(-50%,-50%);
+  z-index:2;
 }
 .hero-video{
   position:absolute;top:0;left:0;width:100%;height:100%;
-  object-fit:cover;object-position:center;
+  object-fit:cover;object-position:center top;
   z-index:0;
-  opacity:0.82;
 }
 .hero-vert{
   position:absolute;bottom:2.5rem;right:1.4rem;
   font-size:0.52rem;font-weight:300;letter-spacing:0.28em;text-transform:uppercase;
   color:rgba(237,231,223,0.55);
   writing-mode:vertical-rl;transform:rotate(180deg);
-  z-index:2;
+  z-index:3;
+}
+/* Dark overlay so bright studio video maintains ink-panel mood */
+.hero-right::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(26,22,20,0.68) 0%,rgba(26,22,20,0.48) 38%,rgba(26,22,20,0.68) 100%);
+  z-index:1;
+  pointer-events:none;
 }
 
 /* ── SECTION BASE ── */
@@ -239,7 +246,6 @@ nav.sc{border-color:var(--ink-faint);}
 #about{display:grid;grid-template-columns:1fr 1.15fr;}
 .about-img{
   min-height:580px;background:var(--cream-dk);
-  display:flex;align-items:center;justify-content:center;
   position:relative;overflow:hidden;
 }
 /* Portrait photo — full bleed cover */
