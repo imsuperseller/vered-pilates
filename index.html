@@ -719,4 +719,24 @@ footer{
   });
 
   // Form
-  document.getElementById('f
+  const fsub = document.getElementById('fsub');
+  if (fsub) {
+    fsub.addEventListener('click', function() {
+      const btn = this;
+      const form = btn.closest('form');
+      const inputs = form ? form.querySelectorAll('input,select,textarea') : [];
+      let valid = true;
+      inputs.forEach(el => { if (el.required && !el.value.trim()) valid = false; });
+      btn.textContent = 'Sent ✓';
+      btn.style.opacity = '0.7';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        btn.style.opacity = '';
+        btn.disabled = false;
+      }, 3000);
+    });
+  }
+</script>
+</body>
+</html>
